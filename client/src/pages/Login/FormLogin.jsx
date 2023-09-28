@@ -1,11 +1,13 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom';
 import Alert from "../RendezVous/Alert";
 
+
 const FormLogin = ({setAuthenticated}) => {
 
+    const [message ,setMessage]=useState({alert:"", display: false ,error:false});
     const [FormLogin, setFormLogin] = useState({username:"",password:""});
     const history=useHistory();
     const handlechange = (e) => {
@@ -30,16 +32,20 @@ const FormLogin = ({setAuthenticated}) => {
         }
         else{
           setAuthenticated(false);
-          console.log("Login Fail")
+          setMessage({alert :"Username ou le mot de passe incorect", display:true,error:true})
         }
       }catch(err){
         console.log(err)
       }
     } 
-
+    useEffect(() => {
+    setTimeout(() => {
+        setMessage({ display: false, alert: '' });
+    }, 5000);
+    }, []);
   return (
     <>
-      <Alert />
+      <Alert message={message} className="py-2"/>
       <Form className="col-11 col-lg-6 d-flex flex-column gap-3 py-4 bg-primary-cutsomized rounded-2" onSubmit={handleLogin}>
         <h2 class="mx-auto text-white font-regular">Admine Session</h2>
         <Form.Group>
