@@ -1,0 +1,342 @@
+@import url(https://db.onlinewebfonts.com/c/a52678f563c78c6fc954b7ace30bc8e5?family=Dax-Regular);
+@import url(https://db.onlinewebfonts.com/c/a75a9217d6bb6ee44e664cc2912f2b7b?family=Dax+Bold);
+@import url(https://db.onlinewebfonts.com/c/d449b96e033b49c0db91f2f53ae8cad3?family=Dax-Light);
+
+.default {
+    font-family: "Dax-Light";
+    font-weight: lighter;
+    margin: 0;  
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: black !important;
+    font-family: 'Dax-Light', sans-serif;
+    font-weight: 300; 
+    cursor: pointer;
+}
+/* Ensure the video background covers the entire viewport */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; 
+    overflow: hidden;
+    
+}
+
+#list-nav{
+    position: absolute;
+    z-index: 1;
+    left:0;
+    height: 100%;
+}
+
+.mt-7{
+    margin-top: 23em;
+}
+#mobileOverlay{
+	width: 100vw;
+	height: 100vh;
+	top:0px;
+	left: 0px;
+	background-color: transparent;
+	position:absolute;
+	z-index:0;
+    
+}
+#mobilenav{
+	width:320px;
+	left:-320px;
+	height: 100vh;
+	background-color:#171717;
+    top: 65px;
+	position: fixed;
+	transition: all .5s;
+	z-index: 1000000;
+	opacity:1;
+	display: flex;
+	flex-direction: column;
+	z-index: 100;
+}
+#handleLabel {
+    color: white;
+    position: absolute;
+    top: 45%;
+    right: -45px ; /*-310px*/
+    transform: rotate(270deg);
+    border-radius: 5px;
+    z-index: 100;
+    font-family: "Dax-Regular";
+    font-size: 20px;
+    width: 75px;
+    padding-top: 15px;
+    /* Centering the content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#closer-nav{
+    width:98%;
+    background-color: #A49672;
+    border: none;
+    color: white;
+    font-size: 16px;
+}
+/* Ensure the video scales to cover the entire viewport while maintaining aspect ratio */
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+menu{
+    margin-top: 7em;
+    font-size: 1.3em;   
+}
+section {
+    transform: translateY(150%);
+    opacity: 0;
+    transition: opacity 0.5s, transform 1s;
+    animation: slideFromBottom 1.5s ease-in-out;
+  }
+  
+.show-section {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .main-bg {
+    background: rgb(228, 228, 228,0.8);
+    min-height: 100vh ;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s, transform 1s;
+    animation: slideFromBottom 1s ease-in-out;
+  }
+  @media (max-width: 984px){
+    .main-bg {
+      min-height:110vh; /* Your mobile-specific height */
+    }
+    footer{
+        margin-top: -20em;
+    }
+  }
+  
+  /* For larger screens (768px and wider) */
+
+  @keyframes slideFromBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .show {
+    opacity: 1; /* When the "show" class is added, make the element fully visible */
+    transform: translateY(0);
+  }
+  
+ul{
+    list-style: none;
+    z-index: 2;
+}
+
+.home a.selected{
+    color:#A49672 !important;
+    font-family:"Dax-Regular";
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    
+}
+.modify{
+    margin-left: 1.7em;
+    font-size:10px ;
+    position: absolute;
+    height: 180px;
+    color:#A49672;
+    opacity: .7;
+    z-index: -1;
+}
+    
+.home:hover a{
+        font-family: "Dax Bold";
+        opacity:1;
+        color:#A49672 !important;
+        opacity:.7;
+        cursor: pointer;
+}
+.diselected img{
+    width: 25px;
+    transition: width 0.2s;
+    ;
+}
+.diselected:hover img {
+    width: 30px;
+}
+.bold{
+    font-family: "Dax Bold";
+    
+}
+.title-1{
+    color:#A49672;
+    font-family: "Dax-Light";
+}
+.Acceuil-descrip p h3{
+    font-size: .5em;
+    font-family: "Dax-Regular";
+}
+.play-film{
+    display: flex;
+    outline: none;
+    border: none;
+    background-color: #A49672;
+    color: #FFF;
+    height: 38px;
+    width: auto;
+    font-family: "dax-light";
+    font-size: 1em;
+    line-height: 45px;
+    justify-content: center;
+    align-items: center;
+    padding-right: 2em;
+}
+.play{
+    color: white;
+}
+.separatore{
+    display:block;
+	width: 1px;
+	height:30px;
+	background-color: #FFF;
+	margin-right: 12px; 
+	transition: all 2s;
+}
+.play-film:hover{
+    background-color: transparent;
+	cursor: pointer;
+	outline: 1px solid #A49672;
+	color:#A49672;
+    transition: .5s;
+    border: 1px solid #A49672;
+}
+.play-film:hover .separatore{
+    background-color:#A49672;
+}
+.hover{
+    position: absolute;
+    opacity:0;
+    transform: translateX(-100%);
+    transition: opacity 0.5s, transform 0.8s;
+}
+.play-film:hover .hover{
+    opacity:1;
+    transform: translateX(0);
+    left: 10px ;
+}
+@media (max-width: 1024px) {
+    .hover {
+       display: none; /* Adjust the value as needed for smaller screens */
+    }
+    .play-film:hover .play{
+        color: #A49672;
+    }
+}
+.brochure{
+    display: flex;
+    outline: none;
+    border: none;
+    background-color: #A49672;
+    color: #FFF;
+    height: 38px;
+    width: auto;
+    font-family: "dax-light";
+    font-size: 1em;
+    line-height: 45px;
+    justify-content: center;
+    align-items: center;
+    padding-right: 2em;
+}
+.brochure-dw{
+    margin-left: .5em;
+}
+.w-1{
+    width: 1.5px;
+}
+.brochure:hover{
+    background-color: transparent;
+	cursor: pointer;
+	outline: 1px solid #A49672;
+	color:#A49672;
+    transition: .5s;
+    border: 1px solid #A49672;
+}
+.brochure:hover .separatore{
+    background-color:#A49672;
+}
+.bi-facebook , .bi-linkedin,.bi-twitter,.bi-youtube,.bi-instagram{
+    color: #A49672;
+}
+.mt-6{
+    margin-top:9em!important ;
+}
+.transition-fade {
+    transition: 0.7s;
+    opacity: 1;
+}
+
+html.is-animating .transition-fade {
+    opacity: 0;
+}
+.pg-2{
+    min-height: 100vh;
+}
+.carousel-vertical {
+    position: relative;
+  }
+  
+  .carousel-inner {
+    height: 100%; /* Set the height of the carousel container */
+  }
+  
+  .carousel-item {
+    transform: translate3d(0, 0, 0); /* Fix for some browser rendering issues */
+  }
+  
+  .carousel-item-next.carousel-item-start,
+  .carousel-item-prev.carousel-item-end {
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .carousel-item-next,
+  .carousel-item-prev {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .carousel-item-next {
+    transform: translate3d(0, 100%, 0); /* Slide items from bottom to top */
+  }
+  
+  .carousel-item-prev {
+    transform: translate3d(0, -100%, 0); /* Slide items from top to bottom */
+  }
+  /* Define a keyframe animation named 'fadeIn' */
+  .title-2{
+    font-family:"Dax-light";
+  }
+  footer{
+    margin-top: -2em;
+  }

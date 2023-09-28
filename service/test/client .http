@@ -1,0 +1,27 @@
+POST http://localhost:5000/createClient
+Content-Type: application/json
+
+{"nom":"YourLastName",
+"prenom":"YourFirstName",
+"email":"dddh@example.com",
+"NumeroTelephone":"123-456-7890",
+"ville":"YourCity",
+"avoireEntre":"Yes",
+"nomEntre":"YourCompanyName",
+"objet":"YourObject",
+"date":"2023-09-26",
+"temps":"10:00"
+}
+
+###
+DELETE http://localhost:5000/deleteClient/15
+###
+PUT http://localhost:5000/updateClient/15
+Content-Type: application/json
+
+{
+    "date":"2022-09-28",
+    "time":"22:59"
+}
+###
+GET http://localhost:5000/getAll

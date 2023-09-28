@@ -1,0 +1,290 @@
+@import url(https://db.onlinewebfonts.com/c/a52678f563c78c6fc954b7ace30bc8e5?family=Dax-Regular);
+@import url(https://db.onlinewebfonts.com/c/a75a9217d6bb6ee44e664cc2912f2b7b?family=Dax+Bold);
+@import url(https://db.onlinewebfonts.com/c/d449b96e033b49c0db91f2f53ae8cad3?family=Dax-Light);
+
+
+:root {
+  --primary-color: #a49672;
+  --text-color: #1d1d1d;
+  --bg-color: #f1f1fb;
+  --font-Regular:"Dax-Regular";
+  --font-Bold:"Dax Bold";
+  --font-Light:"Dax-Light";
+}
+.subtitle{
+  font-family: var(--font-Light);
+  color: var(--text-colorr);
+  font-size: 1em;
+}
+.font-regular{
+  font-family: var(--font-Regular) !important;
+}
+.font-Bold{
+  font-family: var(--font-Bold) !important;
+}
+.text-color{
+  color: #000 !important;
+}
+main{
+  font-family: var(--font-Regular) !important;
+}
+.path-page {
+  font-family: var(--font-Light);
+  color: var(--primary-color);
+  font-size: 0.9em;
+}
+a {
+  text-decoration: none !important;
+  color: var(--bg-color);
+}
+a:hover {
+  color: var(--primary-color);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background: #ffffff;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 9em;
+}
+
+.credits a {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  color: #aaa;
+}
+.credits span {
+  color: var(--primary-color);
+}
+
+
+
+.border-warning-subtle {
+  border-color: var(--primary-color);
+}
+form::placeholder {
+  color: var(--primary-color);
+}
+
+.savoire-plus {
+  border: 1px solid #0077af;
+  color: #000;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+.savoire-plus:hover {
+  background: #0077af;
+  color: white;
+}
+.produit {
+  font-size: 1.5em;
+  letter-spacing: -1px;
+}
+.descrip-2 > p {
+  font-family: "Dax-Regular";
+  padding: 10px 0;
+}
+
+/* Custom CSS for the radio button */
+.form-check-input:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+custom-control-input:checked{
+  background-color: var(--primary-color);
+}
+
+.styled-input{
+  border: 1px solid var(--primary-color) !important;
+  font-family:var(--font-Regular) !important;
+  color: var(--primary-color) !important ;
+  
+}
+.bg-primary-cutsomized{
+  background-color: var(--primary-color) !important;
+  border: var(--primary-color) !important;
+}
+.font-regulare{
+  font-family: var(--font-Regular) !important;
+}
+.font-light{
+  font-family: var(--font-Light) !important;
+}       
+textarea:hover{
+  outline: var(--primary-color);
+  color: var(--text-color);
+}
+
+textarea::placeholder{
+  text-align: center;
+  vertical-align: middle;
+  line-height: 120px;
+}
+
+
+.form-visible {
+  height: auto;
+  transition: height 1s ease;
+  animation: slideDown 1S ease;
+}
+.animation-left {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+.animation-up{
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+.animation-showup{
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.animation-showup.animated{
+  opacity: 1;
+}
+.animation-up.animated{
+  transform: translateY(0);
+  opacity: 1;
+}
+.animation-left.animated {
+  transform: translateX(0);
+  opacity: 1;
+}
+.animation-show.animated
+.visible-left {
+  height: auto;
+  transition: height 1s ease;
+  animation: slideLeft 1S ease;
+}
+
+@keyframes slideDown {
+  from {
+      transform: translateY(100%);
+  }
+  to {
+      transform: translateY(0);
+  }
+}
+@keyframes slideLeft {
+  from {
+      transform: translateX(100%);
+  }
+  to {
+      transform: translateX(0);
+  }
+}
+
+/*new partie*/
+/* Assuming you have a CSS file or module */
+
+/* Background image with white background and z-index 1 */
+/* Assuming you have a CSS file or module */
+
+/* Background image with white background and z-index 1 */
+.bg-image {
+  background: url("../../../public/assets/images/AC.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  z-index: -1;
+  width: 100%;
+  height: 100vh; /* Set the height to match the viewport */
+}
+.bg-image-2{
+  background: url("../../../public/assets/images/CTM.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  z-index: -1;
+  width: 100%;
+  height: 100vh; /* Set the height to match the viewport */
+}
+/* Background color for the inner div */
+
+.primary-bg {
+  background-color: rgba(228, 228, 228, 0.8);
+  width: 100%;
+  height: 100%; /* Fill the entire parent div */
+}
+.custom-carousel {
+  /* Set the maximum height to the viewport height */
+  max-height: 100vh;
+  /* Set the maximum width to the viewport width */
+  max-width: 100vw;
+  overflow: hidden; /* Hide any content that overflows the carousel */
+}
+.primary-color{
+  color: var(--primary-color) !important;
+}
+.horizontal-separator {
+  background-image: url(../../../public/assets/images/hline.svg) no-repeat center center;
+}
+.bg-image-3{
+  background: url("../../../public/assets/images/immobilier/partement.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  z-index: -1;
+  width: 100%;
+  height: 100vh; /* Set the height to match the viewport */
+}
+.mt-lg-5{
+  margin-top: 7.5rem !important;
+}
+.bg-image-4{
+  background: url("../../../public/assets/images/social/child.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  z-index: -1;
+  width: 100%;
+  height: 100vh;
+}
+.bg-image-5{
+  background: url("../../../public/assets/images/Drivers/MGP.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  z-index: -1;
+  width: 100%;
+  height: 100vh;
+}
+.color-primary{
+  color: var(--primary-color) !important;
+}
+.border-customize{
+  border-color: var(--primary-color) !important;
+}
+.mt-modified{
+  margin-top: 1rem !important;
+}
+.default-bg{
+  background: rgb(228, 228, 228,0.5);
+  min-height: 100vh;
+}

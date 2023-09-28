@@ -1,0 +1,2 @@
+GET http://localhost:5000/freeHoures/?date=2023-09-28
+Content-Type: application/json
