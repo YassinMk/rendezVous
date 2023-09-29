@@ -8,6 +8,8 @@ import "./pages/Main/style.css";
 import "./pages/RendezVous/style2.css";
 import Dashbord from "./pages/Dashbord/Dashbord";
 import { useState } from "react";
+import Report from "./pages/Dashbord/Report";
+import Confirm from "./pages/Dashbord/Confirm";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -25,7 +27,24 @@ function App() {
           <LoginAdmin setAuthenticated={setAuthenticated}/>
         </Route>
         <Route path="/dashbord">
-        {authenticated ? <Dashbord /> : <Redirect to="/LoginAdmin" />}
+        {authenticated ?(
+          <Switch>
+            <Route path="/dashbord">
+              <Dashbord/>
+            </Route>
+
+            <Route path="/dashbord/confirm">
+              <Confirm />
+            </Route>
+
+            <Route path="/dashbord/report">
+              <Report />
+            </Route>
+
+          </Switch>
+        ):(
+          <Redirect to="/LoginAdmin" />
+        )}
         </Route>
       </Switch>
     </div>

@@ -1,6 +1,6 @@
 import SideNav from "./SideNav";
 
-const Confirm = () => {
+const Report = () => {
     return ( 
         <div className="row">
             <SideNav />
@@ -8,4 +8,4 @@ const Confirm = () => {
      );
 }
  
-export default Confirm;
+export default Report;
