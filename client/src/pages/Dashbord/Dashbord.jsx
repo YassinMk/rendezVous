@@ -1,8 +1,9 @@
-import SideBar from "./SideBar"
+import SideNav from "./SideNav";
+import "./style3.css"
 const Dashbord = () => {
-    return ( 
+    return (
         <div className="row">
-            <SideBar />
+            <SideNav />
         </div>
      );
 }

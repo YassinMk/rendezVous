@@ -13,7 +13,7 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   return (
     <Router>
-    <div>
+    <div >
       <Switch>
         <Route exact path="/">
           <Main />
