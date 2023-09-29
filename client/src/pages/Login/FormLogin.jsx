@@ -42,7 +42,7 @@ const FormLogin = ({setAuthenticated}) => {
     setTimeout(() => {
         setMessage({ display: false, alert: '' });
     }, 5000);
-    }, []);
+    }, [message.display]);
   return (
     <>
       <Alert message={message} className="py-2"/>

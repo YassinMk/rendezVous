@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css"
 const MainSection = (props) => {
     return ( 
-        <section className={`col-11 col-lg-8 Acceuil-descrp py-3  ms-2 ms-md-0 ${props.showSection ? 'show-section' : ''}`} >
+        <section className={`col-11 col-lg-8 Acceuil-descrp py-3 section-main  ms-2 ms-md-0 ${props.showSection ? 'show-section' : ''}`} >
                       <h3 className="title-1"><span className="bold">ménara</span> Holding</h3>
                       <h3 className="title-1">avec vous,<span className="bold"> construisons </span>pour l'avenir...</h3>
                       <p className="py-2 title-2">

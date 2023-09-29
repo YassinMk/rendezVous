@@ -1,7 +1,8 @@
+import SideBar from "./SideBar"
 const Dashbord = () => {
     return ( 
-        <div>
-            dllfdsùml
+        <div className="row">
+            <SideBar />
         </div>
      );
 }
