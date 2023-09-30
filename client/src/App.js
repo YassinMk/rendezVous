@@ -27,24 +27,21 @@ function App() {
           <LoginAdmin setAuthenticated={setAuthenticated}/>
         </Route>
         <Route path="/dashbord">
-        {authenticated ?(
-          <Switch>
-            <Route path="/dashbord/">
-              <Dashbord/>
-            </Route>
-
-            <Route path="/dashbord/confirmation">
-              <Confirm />
-            </Route>
-
-            <Route path="/dashbord/reportation">
-              <Report />
-            </Route>
-
-          </Switch>
-        ):(
-          <Redirect to="/LoginAdmin" />
-        )}
+            {authenticated ? (
+              <Switch>
+                <Route path="/dashbord/confirmation">
+                  <Confirm />
+                </Route>
+                <Route path="/dashbord/reportation">
+                  <Report />
+                </Route>
+                <Route path="/dashbord">
+                  <Dashbord />
+                </Route>
+              </Switch>
+            ) : (
+              <Redirect to="/LoginAdmin" />
+            )}
         </Route>
       </Switch>
     </div>
