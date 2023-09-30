@@ -29,15 +29,15 @@ function App() {
         <Route path="/dashbord">
         {authenticated ?(
           <Switch>
-            <Route path="/dashbord">
+            <Route path="/dashbord/">
               <Dashbord/>
             </Route>
 
-            <Route path="/dashbord/confirm">
+            <Route path="/dashbord/confirmation">
               <Confirm />
             </Route>
 
-            <Route path="/dashbord/report">
+            <Route path="/dashbord/reportation">
               <Report />
             </Route>
 
