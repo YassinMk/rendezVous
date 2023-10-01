@@ -4,6 +4,7 @@ const Confirm = () => {
     return ( 
         <div className="row">
             <SideNav />
+            fhgf
          </div>
      );
 }

@@ -10,6 +10,7 @@ import Dashbord from "./pages/Dashbord/Dashbord";
 import { useState } from "react";
 import Report from "./pages/Dashbord/Report";
 import Confirm from "./pages/Dashbord/Confirm";
+import SideNav from "./pages/Dashbord/SideNav";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
