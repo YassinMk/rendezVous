@@ -76,4 +76,15 @@ app.post('/admin/login',async(req,res)=>{
         return  res.status(403).json({ error: 'Internal Server Error' });
     }
 })
+
+app.get("/getNumbreRv",async(req,res)=>{
+   
+    try{
+        const numbreRv = await db.getNumbreRv();
+        return res.status(201).json(numbreRv);
+    } catch (e) {
+        console.error(e.message);
+    }
+});
+
 app.listen(process.env.PORT || 5000,()=>console.log('Server is running on port 5000'));

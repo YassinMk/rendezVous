@@ -12,6 +12,7 @@
 
 a{
     text-decoration: none;
+    color: #171717 !important;
     font-family: 'Dax-Light', sans-serif;
     font-weight: 300; 
     cursor: pointer;

@@ -11,7 +11,7 @@ const ResearchHome = () => {
 
             <div className="col-6 col-lg-3 " >
                 <div className="">
-                    <Link to="/LoginAdmin"><Button variant="outline-danger" className="ms-5 w-75"><IoLogInOutline width={"200px"} /> Deconnexion</Button></Link> 
+                    <Link to="/LoginAdmin"><Button variant="outline-danger" className="ms-4 w-75"><IoLogInOutline width={"200px"} /> Deconnexion</Button></Link> 
                 </div>
             </div>
         </div>

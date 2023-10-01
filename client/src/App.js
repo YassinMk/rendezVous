@@ -6,11 +6,10 @@ import LoginAdmin from "./pages/Login/loginAdmin"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./pages/Main/style.css";
 import "./pages/RendezVous/style2.css";
-import Dashbord from "./pages/Dashbord/Dashbord";
+import Dashbord from "./pages/Dashbord/DashbordHome";
 import { useState } from "react";
 import Report from "./pages/Dashbord/Report";
 import Confirm from "./pages/Dashbord/Confirm";
-import SideNav from "./pages/Dashbord/SideNav";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);

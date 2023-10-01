@@ -196,6 +196,27 @@ class dbservice{
                 return false; // You might want to handle the error and return an appropriate value
             }
         }
+        async getNumbreRv (){
+            try{
+                const nombreRendezVous=await new Promise ((resolve ,reject)=>{
+                    let sqlQuery=`SELECT COUNT(*) as nombreRv FROM rendez_vous`
+                    connection.query(sqlQuery,(err,results)=>{
+                        if(err){
+                            reject(new Error(err.message));
+                        }else{
+                            console.log(results[0].nb);
+                            resolve(results)
+                        }
+                    });
+                    
+                 });
+                 return nombreRendezVous
+            }catch(err){
+                console.log(err.message);
+                throw err;
+            } 
+
+        }
 }
 
 module.exports=dbservice;
