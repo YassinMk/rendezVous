@@ -204,8 +204,7 @@ class dbservice{
                         if(err){
                             reject(new Error(err.message));
                         }else{
-                            console.log(results[0].nb);
-                            resolve(results)
+                            resolve(results[0].nombreRv)
                         }
                     });
                     
