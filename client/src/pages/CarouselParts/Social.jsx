@@ -9,7 +9,7 @@ const Social = () => {
           <div className="d-flex justify-content-center flex-column align-items-center  mt-lg-5 mt-md-5  ">
 
                 <img src="/assets/gif/5.gif" alt="gif5" width={"100px"} />
-                <h6 className="mt-3 bold">Social</h6>
+                <h6 className="mt-3 bold text-dark">Social</h6>
                     <img src="/assets/images/hline.svg" width={"670px"}  className="mt-1 mt-lg-3" />
 
                 <div className="d-flex  flex-column justify-content-evenly align-items-center mt-2 mt-lg-2 ">

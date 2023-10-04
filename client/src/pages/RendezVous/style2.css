@@ -12,6 +12,7 @@
   --font-Light:"Dax-Light";
 }
 .subtitle{
+  color: var(--text-color) !important;
   font-family: var(--font-Light);
   color: var(--text-colorr);
   font-size: 1em;

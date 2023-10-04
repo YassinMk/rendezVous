@@ -1,7 +1,45 @@
-.height-100{
-    height: 100vh;
+@import url(https://db.onlinewebfonts.com/c/a52678f563c78c6fc954b7ace30bc8e5?family=Dax-Regular);
+@import url(https://db.onlinewebfonts.com/c/a75a9217d6bb6ee44e664cc2912f2b7b?family=Dax+Bold);
+@import url(https://db.onlinewebfonts.com/c/d449b96e033b49c0db91f2f53ae8cad3?family=Dax-Light);
+
+:root {
+  --primary-color: #a49672;
+  --text-color: #1d1d1d;
+  --bg-color: #f1f1fb;
+  --font-Regular: "Dax-Regular";
+  --font-Bold: "Dax Bold";
+  --font-Light: "Dax-Light";
+}
+.font-regular {
+  font-family: var(--font-Regular) !important;
+}
+.font-Bold {
+  font-family: var(--font-Bold) !important;
+}
+.height-100 {
+  height: 100vh;
 }
 
-.active{
-    color: white !important;
+.active {
+  color: white !important;
+}
+.w-modified {
+  width: 100% !important;
+}
+.px-modified {
+  padding-left: 1em;
+  padding-right: 3em;
+}
+.font-regulare {
+  font-family: "Dax-regulare";
+}
+.custom-card-height {
+    height: 10% !important; /* Adjust the height value as needed */
+}
+.w-table{
+    width: 35% !important;
+}
+.add-scrolling{
+  overflow-y: auto;
+  max-height: 300px;
 }

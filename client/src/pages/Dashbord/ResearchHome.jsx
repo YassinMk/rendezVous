@@ -5,13 +5,13 @@ const ResearchHome = () => {
     return ( 
         <div className="row ms-1 mx-lg-0">
 
-            <div className="col-6 col-lg-9  " >
+            <div className="col-6 col-lg-9    " >
                 <Form.Control type="text" placeholder="Chercher " className=" w-100 font-regular" />
             </div>
 
             <div className="col-6 col-lg-3 " >
-                <div className="">
-                    <Link to="/LoginAdmin"><Button variant="outline-danger" className="ms-4 w-75"><IoLogInOutline width={"200px"} /> Deconnexion</Button></Link> 
+                <div className="ms-1">
+                    <Link to="/LoginAdmin"><Button variant="outline-danger" className="ms-3 w-75"><IoLogInOutline width={"200px"} /> Deconnexion</Button></Link> 
                 </div>
             </div>
         </div>

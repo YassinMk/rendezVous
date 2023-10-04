@@ -336,6 +336,7 @@ html.is-animating .transition-fade {
   /* Define a keyframe animation named 'fadeIn' */
   .title-2{
     font-family:"Dax-light";
+    color: #171717;
   }
   footer{
     margin-top: -2em;

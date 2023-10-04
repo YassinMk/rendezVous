@@ -12,7 +12,7 @@ const Immobilier = () => {
                   <img
                         src="/assets/gif/3.gif" alt="Image 1" width={"100px"} 
                   />
-                  <h6 className="mt-3 bold">Immobilier</h6>
+                  <h6 className="mt-3 bold text-dark">Immobilier</h6>
 
                   <img src="/assets/images/hline.svg" width={"670px"}  className="mt-1 mt-lg-3"></img>
 

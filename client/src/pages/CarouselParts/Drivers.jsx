@@ -8,7 +8,7 @@ const Drivers = () => {
           <div className="d-flex justify-content-center flex-column align-items-center  mt-5 mt-lg-5 ">
 
                     <img src="/assets/gif/4.gif" alt="gif4" width={"100px"} />
-                        <h6 className="mt-3 bold">Drivers</h6>
+                        <h6 className="mt-3 bold text-dark">Drivers</h6>
                     <img src="/assets/images/hline.svg" width={"670px"}  className="mt-5 mt-md-4 mt-lg-3 " />
 
                 <div className="d-flex  flex-column justify-content-evenly align-items-center mt-3">
