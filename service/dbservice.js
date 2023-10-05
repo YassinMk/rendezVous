@@ -23,22 +23,40 @@ class dbservice{
     static getdbServiceInstance(){
         return instance ? instance : new dbservice();
     }
-    async getAllClient(){
+    async getAllClient(limit,offset){
         try{
             const result= await new Promise((resolve,reject)=>{
-                const query=`select * from client`;
-                connection.query(query ,(err,result)=>{
+                const query=`SELECT client.id_Client ,client.nom_client,client.prenom_Client,client.email_Client,rendez_vous.date_rv,rendez_vous.heure_rv,rendez_vous.status
+                              FROM client 
+                              JOIN rendez_vous ON client.id_Client=rendez_vous.id_Client
+                              LIMIT ? OFFSET ? `;
+                connection.query(query ,[parseInt(limit),parseInt(offset)],(err,result)=>{
                     if(err){
                         reject(new Error(err.message));
                     }
                     resolve (result);
                 })
-
-
             });
             console.log(result);
             return result;  
 
+        }catch(err){
+            console.log(err.message);
+        }
+    }
+    
+    async getNbPages(){
+        try{
+            const result= await new Promise((resolve,reject)=>{
+                let query=`SELECT COUNT(*) as count  from Client`;
+                connection.query(query,(err,result)=>{
+                    if(err){
+                        reject(new Error(err.message));
+                    }
+                    resolve(result);
+                })
+            });
+            return result;
         }catch(err){
             console.log(err.message);
         }
@@ -175,7 +193,7 @@ class dbservice{
         async authentication(username, password) {
             try {
                 const verifyAdmin = await new Promise((resolve, reject) => {
-                    let query = `SELECT * FROM administrateur WHERE nom_administrateur=? AND mot_de_passe_Administrateur=?;`;
+                    let query = `SELECT * FROM administrateur WHERE nom_Administrateur=? AND mot_de_passe_Administrateur=?;`;
                     // Pass the parameters correctly to connection.query
                     connection.query(query, [username, password], (err, result) => {
                         if (err) {
