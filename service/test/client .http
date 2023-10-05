@@ -24,6 +24,6 @@ Content-Type: application/json
     "time":"22:59"
 }
 ###
-GET http://localhost:5000/getAll
+GET http://localhost:5000/getAll?page=1&limit=5
 ###
 GET http://localhost:5000/getNumbreRv

@@ -4,16 +4,32 @@ const app=express();
 const cors=require('cors');
 const dotenv=require("dotenv");
 const dbservice=require("./dbservice");
+const mysql=require('mysql');
 app.use(cors());
 app.use(express.json());
 app.use( express.urlencoded({ extended:false }));
 
 const db=dbservice.getdbServiceInstance();
-//get all
+//get all with pagination 
 app.get('/getAll',async (req,res)=>{
     try {
-        const result = await db.getAllClient();
-        return res.json(result);
+        const {page,limit} = req.query;
+        const offset=(page-1)*limit;
+        const result = await db.getAllClient(limit,offset);
+        console.log(result);
+        const totalePageData=await db.getNbPages();
+        console.log(totalePageData);
+        const totalPage=Math.ceil(totalePageData[0]?.count/limit);
+        console.log(totalPage);
+        return res.json({
+            data:result,
+            pagination:{
+                page:page,
+                limit:limit,
+                totalPage
+            }
+
+        });
       } catch (error) {
         console.error(error.message);
         return res.status(500).json({ error: 'Internal Server Error' });

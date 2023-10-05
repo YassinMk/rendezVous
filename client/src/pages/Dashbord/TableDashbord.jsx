@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import "../Main/style.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   MDBBadge,
   MDBBtn,
@@ -11,19 +11,39 @@ import {
 import Pagination from 'react-bootstrap/Pagination';
 
 const TableDasbord = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [data, setData] = useState([]);
+  const [totalPages, setTotalPages] = useState(1);
+  const itemsPerPage = 5;
   const [handlePage, sethandlePage] = useState(1);
-  const handleClickPage=(number)=>{
-    sethandlePage(number)
+  const handleClickPage= async (pageNumber)=>{
+    try{
+      const response = await fetch(`http://localhost:5000/getAll?page=${currentPage}&limit=${itemsPerPage}`);
+      if (response.ok) {
+        const jsonData = await response.json();
+        console.log(jsonData);
+        setData(jsonData.data);
+        setCurrentPage(pageNumber);
+        setTotalPages(jsonData.pagination.totalPage);
+      } else {
+        console.error('Failed to fetch data');
+      }
+    }catch(err){
+      console.error(err);
+    }
   }
   let active = handlePage;
   let items = [];
-  for (let number = 1; number <= 5; number++) {
+  for (let number = 1; number <= totalPages; number++) {
     items.push(
       <Pagination.Item key={number} active={number === active} onClick={()=>handleClickPage(number)} >
         {number}
       </Pagination.Item>
     );
   }
+  useEffect(() => {
+    handleClickPage(1);
+  }, []);
   return (
     <>
       <MDBTable
@@ -49,37 +69,40 @@ const TableDasbord = () => {
             </th>
           </tr>
         </MDBTableHead>
-        <MDBTableBody className="">
-          <tr>
-            <td className="font-regulare">1</td>
-            <td className="w-table">
-              <div className="d-flex align-items-center">
-                <img
-                  src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                  alt=""
-                  style={{ width: "45px", height: "45px" }}
-                  className="rounded-circle"
-                />
-                <div className="ms-3">
-                  <p className="fw-bold mb-1">John Doe</p>
-                  <p className="text-muted mb-0">john.doe@gmail.com</p>
-                </div>
-              </div>
-            </td>
-            <td className="w-25 font-regulare td-modified m-modified">Some Time</td>
-            <td className="font-regulare border font-regular text-center  ">
-              dfsdf
-            </td>
-            <td className="">
-              <div color="transparant" rounded size="sm" className="ms-5">
-                  <Button className="ms-0 bg-success border-0"> Confirmer</Button>
-                  <Button className="ms-3 bg-warning border-0">Repoter</Button>
-              </div>
-            </td>
-          </tr>
-          
-          {/* Add more rows as needed */}
-        </MDBTableBody>
+              <MDBTableBody className="">
+               {data.map((item, index) => (
+                  <tr key={item.id_Client}>
+                    <td className="font-regulare">{index + 1}</td>
+                    <td className="w-table">
+                      <div className="d-flex align-items-center">
+                        <img
+                          src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                          alt=""
+                          style={{ width: "45px", height: "45px" }}
+                          className="rounded-circle"
+                        />
+                        <div className="ms-3">
+                          <p className="fw-bold mb-1">{`${item.nom_client} ${item.prenom_Client}`}</p>
+                          <p className="text-muted mb-0">{item.email_Client}</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="w-25 font-regulare td-modified m-modified">
+                      {item.formatted_date_rv}
+                    </td>
+                    <td className="font-regulare border font-regular text-center">
+                      {item.heure_rv}
+                    </td>
+                    <td>
+                      <div color="transparent" rounded size="sm" className="ms-5">
+                        <Button className="ms-0 bg-success border-0">Confirmer</Button>
+                        <Button className="ms-3 bg-warning border-0">Reporter</Button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+      </MDBTableBody>
+
        
       </MDBTable>
       
