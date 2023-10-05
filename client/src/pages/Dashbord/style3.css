@@ -34,12 +34,34 @@
   font-family: "Dax-regulare";
 }
 .custom-card-height {
-    height: 10% !important; /* Adjust the height value as needed */
+  height: 10% !important; /* Adjust the height value as needed */
 }
-.w-table{
-    width: 35% !important;
+.w-table {
+  width: 35% !important;
 }
-.add-scrolling{
+.add-scrolling {
   overflow-y: auto;
   max-height: 300px;
+}
+
+/* In an external CSS file or a CSS module */
+.custom-mdb-datatable .table {
+  border-collapse: collapse; /* Remove spacing between table cells */
+  margin-bottom: 0px;
+  width: 100%; /* Make the table fill its container */
+}
+.custom-mdb-datatable .dataTables_scrollHeadInner {
+  padding-right: 0px  !important;
+}
+.custom-mdb-datatable th,
+.custom-mdb-datatable td {
+  padding: 8px; /* Adjust the cell padding as needed */
+  text-align: left; /* Adjust the text alignment as needed */
+}
+.td-modified{
+  margin-left: 4em !important ;
+  
+}
+.m-modified{
+
 }
