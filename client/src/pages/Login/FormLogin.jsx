@@ -27,7 +27,6 @@ const FormLogin = ({setAuthenticated}) => {
         console.log(parseRes);
         if(parseRes===true){
           setAuthenticated(true);
-          localStorage.setItem("authen","im login")
           history.push("/dashbord")
           console.log("Login Success")
         }

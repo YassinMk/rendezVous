@@ -29,6 +29,7 @@ class dbservice{
                 const query=`SELECT client.id_Client ,
                               client.nom_client,client.prenom_Client,
                               client.email_Client, 
+                              client.objet_Client,
                               DATE_FORMAT(rendez_vous.date_rv, '%y-%m-%d') AS formatted_date_rv,
                               rendez_vous.heure_rv,
                               rendez_vous.status

@@ -9,6 +9,7 @@ import {
   MDBTableBody,
 } from "mdb-react-ui-kit";
 import Pagination from 'react-bootstrap/Pagination';
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const TableDasbord = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -76,14 +77,14 @@ const TableDasbord = () => {
                     <td className="w-table">
                       <div className="d-flex align-items-center">
                         <img
-                          src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                          src="/assets/images/icon-client.png"
                           alt=""
                           style={{ width: "45px", height: "45px" }}
                           className="rounded-circle"
                         />
                         <div className="ms-3">
-                          <p className="fw-bold mb-1">{`${item.nom_client} ${item.prenom_Client}`}</p>
-                          <p className="text-muted mb-0">{item.email_Client}</p>
+                          <p className="fw-bold mb-1 font-regulare">{`${item.nom_client} ${item.prenom_Client}`}</p>
+                          <p className="text-muted mb-0 font-regular">{item.email_Client}</p>
                         </div>
                       </div>
                     </td>
@@ -95,8 +96,8 @@ const TableDasbord = () => {
                     </td>
                     <td>
                       <div color="transparent" rounded size="sm" className="ms-5">
-                        <Button className="ms-0 bg-success border-0">Confirmer</Button>
-                        <Button className="ms-3 bg-warning border-0">Reporter</Button>
+                        <Link to={{pathname:"/dashbord/confirmation",state: { userData: item }}}><Button className="ms-0 bg-success border-0">Confirmer</Button></Link>
+                        <Link to="/dashbord/reportation"><Button className="ms-3 bg-warning border-0">Reporter</Button></Link>
                       </div>
                     </td>
                   </tr>
