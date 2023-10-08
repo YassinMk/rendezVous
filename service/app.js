@@ -5,6 +5,7 @@ const cors=require('cors');
 const dotenv=require("dotenv");
 const dbservice=require("./dbservice");
 const mysql=require('mysql');
+const nodemailer = require('nodemailer');
 app.use(cors());
 app.use(express.json());
 app.use( express.urlencoded({ extended:false }));
