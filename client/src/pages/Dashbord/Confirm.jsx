@@ -13,6 +13,7 @@ const Confirm = () => {
     formatted_date_rv,
     heure_rv,
     status,
+    id_Client,
     objet_Client,
   } = location.state.userData;
   const [isSending, setIsSending] = useState({text:"Envoyer",changeEtat:false});
@@ -38,6 +39,22 @@ const Confirm = () => {
     setMessage(e.target.value);
   };
 
+  const updateStatus= async()=>{
+    try{
+        const reponse= await fetch(`http://localhost:5000/updateClient/${id_Client}`,{
+            method:"PUT",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({status:"Confirmé"})
+        });
+        if(!reponse.ok){
+            console.error('Failed to fetch data');
+        }else{
+            console.log(reponse);
+        }
+    }catch(err){
+        console.log(err)
+    }
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSending({text:"En coure..." ,changeEtat:"true"}); // Set isSending to true when the email sending process starts
@@ -59,6 +76,7 @@ const Confirm = () => {
   
       if (response.status === 200) {
         console.log("Email sent successfully");
+        updateStatus();
         setIsSending({text:"Email été Envoyé" ,changeEtat:true});
       }
     } catch (error) {
@@ -69,6 +87,9 @@ const Confirm = () => {
     }
   };
   
+  
+
+
   useEffect(() => {
     // This effect will run whenever isSending, validateSending, or errorOccurred changes.
 

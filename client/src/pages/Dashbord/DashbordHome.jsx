@@ -3,7 +3,6 @@ import "./style3.css";
 import ResearchHome from "./ResearchHome";
 import Statistics from "./Statistics";
 import TableDasbord from "./TableDashbord";
-import { Card } from "react-bootstrap";
 
 const Dashbord = () => {
   return (

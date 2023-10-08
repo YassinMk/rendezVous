@@ -82,10 +82,9 @@ app.put('/updateClient/:id',async(req,res)=>{
     try{
         const {id}=req.params;
         console.log(id);
-        const {date,time}= req.body;
-        console.log(date , time);
-        const result= await db.updateClient(id,date,time);
-        return res.json(result);
+        const {status}= req.body;   
+        const result= await db.updateClient(id,status);
+        return res.status(200).json(result);
     }catch(err){
         console.log(err.message);
     }

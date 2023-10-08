@@ -178,14 +178,14 @@ class dbservice{
                 const updateClientResult = await new Promise((resolve, reject) => {
                     const query = `
                         UPDATE rendez_vous
-                        SET date_rv = ?, heure_rv = ?
+                        SET status=?
                         WHERE id_Client = ?;
                     `;
-                    connection.query(query, [date, time, id], (err, result) => {
+                    connection.query(query, [status,id], (err, result) => {
                         if (err) {
                             reject(new Error(err.message));
                         }
-                         result = `Le client ${id} a été modifié avec succès au ${date} à l'heure ${time}.`;
+                         result = `Le client ${id} a été modifié avec succès `;
                         resolve(result);
                     });
                 });

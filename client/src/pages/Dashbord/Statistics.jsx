@@ -3,6 +3,7 @@ import React, { useEffect,useState } from 'react';
 
 const Statistics = () => {
     const [nbRv, setnbRv] = useState(null);
+    const [nbconfirmer,setNbconfirmer]=useState(null);
     const fetchData= async()=>{
         try{
             const res = await fetch("http://localhost:5000/getNumbreRv");
