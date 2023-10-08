@@ -15,8 +15,6 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   useEffect(() => {
     const authToken = localStorage.getItem("authen");
-    console.log("fdksml");
-    console.log(authToken);
     if (authToken) {
       setAuthenticated(true);
     }

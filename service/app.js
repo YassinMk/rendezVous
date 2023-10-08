@@ -11,6 +11,13 @@ app.use(express.json());
 app.use( express.urlencoded({ extended:false }));
 
 const db=dbservice.getdbServiceInstance();
+const transporter=nodemailer.createTransport({
+    service:"Gmail",
+    auth: {
+        user: 'yassine.mkhallal-etu@etu.univh2c.ma',        
+        pass: 'Another#123Roro',
+      },
+});
 //get all with pagination 
 app.get('/getAll',async (req,res)=>{
     try {
@@ -103,5 +110,26 @@ app.get("/getNumbreRv",async(req,res)=>{
         console.error(e.message);
     }
 });
+
+app.post("/send-email",async (req,res)=>{
+    try{
+        const {name,email,message,date}=req.body;
+      
+        const mailOptions = {
+            from: 'djjfhdhj@gmail.com',
+            to: email,
+            subject: `Confirmation de votre rendez-vous de date ${date}`,
+            text: message,
+        };
+        await transporter.sendMail(mailOptions);
+        res.status(200).send("email sended")
+
+    }catch(err){
+        console.error('Error sending email:', err);
+        res.sendStatus(500);
+    }
+   
+
+})
 
 app.listen(process.env.PORT || 5000,()=>console.log('Server is running on port 5000'));

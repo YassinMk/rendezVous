@@ -27,3 +27,10 @@ Content-Type: application/json
 GET http://localhost:5000/getAll?page=1&limit=5
 ###
 GET http://localhost:5000/getNumbreRv
+###
+POST http://localhost:5000/send-email
+Content-Type: application/json
+
+{
+    "name":"yake","email":"yassinemkhallal@gmail.com","message":"hellow","date":"2023-10-15"
+}

@@ -173,7 +173,7 @@ class dbservice{
     }
     
 }
-        async updateClient(id, date, time) {
+        async updateClient(id, status) {
             try {
                 const updateClientResult = await new Promise((resolve, reject) => {
                     const query = `
