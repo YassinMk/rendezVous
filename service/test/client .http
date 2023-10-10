@@ -34,3 +34,5 @@ Content-Type: application/json
 {
     "name":"yake","email":"yassinemkhallal@gmail.com","message":"hellow","date":"2023-10-15"
 }
+###
+GET http://localhost:5000/getNbConfirm

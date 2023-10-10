@@ -9,7 +9,8 @@ import "./pages/RendezVous/style2.css";
 import Dashbord from "./pages/Dashbord/DashbordHome";
 import { useState} from "react";
 import Report from "./pages/Dashbord/Report";
-import Confirm from "./pages/Dashbord/Confirm";
+import CheckConfirm from "./pages/Dashbord/CheckConfirm"; // Use "Dashbord" instead of "Dashboard"
+
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -36,7 +37,7 @@ function App() {
             {authenticated ? (
               <Switch>
                 <Route path="/dashbord/confirmation">
-                  <Confirm />
+                  <CheckConfirm />
                 </Route>
                 <Route path="/dashbord/reportation">
                   <Report />

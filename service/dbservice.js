@@ -240,6 +240,28 @@ class dbservice{
             } 
 
         }
+        async getNbconfirm(){
+            try{
+                const nbConfirm=await new Promise ((resolve ,reject)=>{
+                    let sqlQuery=`SELECT COUNT(*) AS confirm_count
+                    FROM rendez_vous
+                    WHERE status = 'Confirmé'`;
+                    connection.query(sqlQuery,(err,results)=>{
+                        if(err){
+                            reject(new Error(err.message));
+                        }else{
+                            resolve(results[0].confirm_count)
+                        }
+
+                    });
+                    
+                });
+                return nbConfirm;
+                }catch(err){
+                    console.log(err.message);
+                    throw err;
+        }                
+    }
 }
 
 module.exports=dbservice;

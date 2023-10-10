@@ -1,12 +1,14 @@
 import { Button, Form } from "react-bootstrap";
 import SideNav from "./SideNav";
-import { useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import Alert from "../RendezVous/Alert";
 
-const Confirm = () => {
-  const location = useLocation();
+const Confirm = ({userData}) => {
+ 
+  const [isSending, setIsSending] = useState({text:"Envoyer",changeEtat:false});
+  const [error, setError] = useState({ alert: "", display: false });
+
   const {
     nom_client,
     email_Client,
@@ -15,9 +17,9 @@ const Confirm = () => {
     status,
     id_Client,
     objet_Client,
-  } = location.state.userData;
-  const [isSending, setIsSending] = useState({text:"Envoyer",changeEtat:false});
-  const [error, setError] = useState({ alert: "", display: false });
+  } = userData;
+  console.log(nom_client);
+  
   const [Message, setMessage] = useState(`Cher(e) ${nom_client},
     Nous sommes ravis de vous confirmer votre réservation  le ${formatted_date_rv} à ${heure_rv}. Nous sommes impatients de vous accueillir à [adresse] à [heure] pour cette occasion spéciale.
     Détails de la réservation :

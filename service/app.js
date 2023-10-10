@@ -131,4 +131,14 @@ app.post("/send-email",async (req,res)=>{
 
 })
 
+app.get("/getNbConfirm",async(req,res)=>{
+   
+    try{
+        const numbreConfirm= await db.getNbconfirm();
+        return res.status(201).json(numbreConfirm);
+    } catch (e) {
+        console.error(e.message);
+    }
+});
+
 app.listen(process.env.PORT || 5000,()=>console.log('Server is running on port 5000'));

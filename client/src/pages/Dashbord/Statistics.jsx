@@ -6,9 +6,12 @@ const Statistics = () => {
     const [nbconfirmer,setNbconfirmer]=useState(null);
     const fetchData= async()=>{
         try{
-            const res = await fetch("http://localhost:5000/getNumbreRv");
-            const data = await res.json();
-            setnbRv(data);
+            const resNbRv = await fetch("http://localhost:5000/getNumbreRv");
+            const resNbc=await fetch("http://localhost:5000/getNbConfirm")
+            const nbRv= await resNbRv.json();
+            const nbconfirmer=await resNbc.json();
+            setnbRv(nbRv);
+            setNbconfirmer(nbconfirmer);
         }catch(err){
             console.log(err);
         }
@@ -42,7 +45,7 @@ const Statistics = () => {
 
                                 <div className="  mt-3">
                                     <h4 className="font-regulare fs-5">Nombre de Confirmation</h4>
-                                    <h1 className="font-regulare fs-2 text-success  fw-bold"><CountUp start={0} end={0}/></h1>
+                                    <h1 className="font-regulare fs-2 text-success  fw-bold"><CountUp start={0} end={nbconfirmer} duration={5}/></h1>
                                 </div>
                         </div>
                 </section>
