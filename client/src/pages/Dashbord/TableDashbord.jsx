@@ -11,7 +11,7 @@ import {
 import Pagination from "react-bootstrap/Pagination";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-const TableDasbord = () => {
+const TableDasbord = ({ searchQuery }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -77,7 +77,12 @@ const TableDasbord = () => {
           </tr>
         </MDBTableHead>
         <MDBTableBody className="">
-            {data.map((item, index) => (
+          {data.map((item, index) => {
+            const fullName = `${item.nom_client} ${item.prenom_Client}`;
+            if (!fullName.toLowerCase().includes(searchQuery.toLowerCase())) {
+              return null; // Skip rendering if it doesn't match the search query
+            }
+            return (
               <tr key={item.id_Client}>
                 <td className="font-regulare">{index + 1}</td>
                 <td className="w-table">
@@ -89,7 +94,7 @@ const TableDasbord = () => {
                       className="rounded-circle"
                     />
                     <div className="ms-3">
-                      <p className="fw-bold mb-1 font-regulare">{`${item.nom_client} ${item.prenom_Client}`}</p>
+                      <p className="fw-bold mb-1 font-regulare">{fullName}</p>
                       <p className="text-muted mb-0 font-regular">
                         {item.email_Client}
                       </p>
@@ -110,28 +115,29 @@ const TableDasbord = () => {
                           pathname: "/dashbord/confirmation",
                           state: { userData: item },
                         }}
-                    >
-                      <Button className="ms-0 bg-success border-0 ">
-                        Confirmer
+                      >
+                        <Button className="ms-0 bg-success border-0">
+                          Confirmer
+                        </Button>
+                        <Link to="/dashbord/reportation">
+                          <Button className="ms-3 bg-warning border-0">
+                            Reporter
+                          </Button>
+                        </Link>
+                      </Link>
+                    ) : (
+                      <Button
+                        className="ms-0 bg-success border-0 ms-5 font-regular"
+                        disabled
+                      >
+                        Confirmé
                       </Button>
-                    </Link>
-                  ) : (
-                    <Button className="ms-0 bg-success border-0 ms-5 font-regular" disabled>
-                      Confirmé
-                    </Button>
-                  )}
-
-                  {item.status !== "Confirmé" && (
-                    <Link to="/dashbord/reportation">
-                      <Button className="ms-3 bg-warning border-0">
-                        Reporter
-                      </Button>
-                    </Link>
-                  )}
-                </div>
-              </td>
-            </tr>
-          ))}
+                    )}
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
         </MDBTableBody>
       </MDBTable>
 
