@@ -265,7 +265,7 @@ const MyForm = () => {
             <option value="" className="font-regular" disabled selected >Choisissez le temps de rendez-vous</option>
 
             {!isNotValid && availableTimes.map((time, index) => (
-              <option key={index} value={time}>
+              <option key={index} value={time} className="font-regular">
                 {time}
               </option>
             ))}

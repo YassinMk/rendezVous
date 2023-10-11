@@ -1,12 +1,13 @@
 import { Button, Form } from "react-bootstrap";
 import { IoLogInOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-const ResearchHome = () => {
+const ResearchHome = ({onSearchChange}) => {
+
     return ( 
         <div className="row ms-1 mx-lg-0">
 
             <div className="col-6 col-lg-9    " >
-                <Form.Control type="text" placeholder="Chercher " className=" w-100 font-regular" />
+                <Form.Control type="text" placeholder="Chercher " className=" w-100 font-regular" onChange={(e)=>onSearchChange(e.target.value)} />
             </div>
 
             <div className="col-6 col-lg-3 " >

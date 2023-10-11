@@ -77,39 +77,39 @@ const TableDasbord = () => {
           </tr>
         </MDBTableHead>
         <MDBTableBody className="">
-          {data.map((item, index) => (
-            <tr key={item.id_Client}>
-              <td className="font-regulare">{index + 1}</td>
-              <td className="w-table">
-                <div className="d-flex align-items-center">
-                  <img
-                    src="/assets/images/icon-client.png"
-                    alt=""
-                    style={{ width: "45px", height: "45px" }}
-                    className="rounded-circle"
-                  />
-                  <div className="ms-3">
-                    <p className="fw-bold mb-1 font-regulare">{`${item.nom_client} ${item.prenom_Client}`}</p>
-                    <p className="text-muted mb-0 font-regular">
-                      {item.email_Client}
-                    </p>
+            {data.map((item, index) => (
+              <tr key={item.id_Client}>
+                <td className="font-regulare">{index + 1}</td>
+                <td className="w-table">
+                  <div className="d-flex align-items-center">
+                    <img
+                      src="/assets/images/icon-client.png"
+                      alt=""
+                      style={{ width: "45px", height: "45px" }}
+                      className="rounded-circle"
+                    />
+                    <div className="ms-3">
+                      <p className="fw-bold mb-1 font-regulare">{`${item.nom_client} ${item.prenom_Client}`}</p>
+                      <p className="text-muted mb-0 font-regular">
+                        {item.email_Client}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </td>
-              <td className="w-25 font-regulare td-modified m-modified">
-                {item.formatted_date_rv}
-              </td>
-              <td className="font-regulare border font-regular text-center">
-                {item.heure_rv}
-              </td>
-              <td>
-                <div color="transparent" rounded size="sm" className="ms-5">
-                  {item.status !== "Confirmé" ? (
-                    <Link
-                      to={{
-                        pathname: "/dashbord/confirmation",
-                        state: { userData: item },
-                      }}
+                </td>
+                <td className="w-25 font-regulare td-modified m-modified">
+                  {item.formatted_date_rv}
+                </td>
+                <td className="font-regulare border font-regular text-center">
+                  {item.heure_rv}
+                </td>
+                <td>
+                  <div color="transparent" rounded size="sm" className="ms-5">
+                    {item.status !== "Confirmé" ? (
+                      <Link
+                        to={{
+                          pathname: "/dashbord/confirmation",
+                          state: { userData: item },
+                        }}
                     >
                       <Button className="ms-0 bg-success border-0 ">
                         Confirmer
