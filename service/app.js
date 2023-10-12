@@ -23,7 +23,7 @@ app.get('/getAll',async (req,res)=>{
     try {
         const {page,limit} = req.query;
         const offset=(page-1)*limit;
-        const result = await db.getAllClient(limit,offset);
+        const result = await db.getAllClients(limit,offset);
         console.log(result);
         const totalePageData=await db.getNbPages();
         console.log(totalePageData);
@@ -140,5 +140,28 @@ app.get("/getNbConfirm",async(req,res)=>{
         console.error(e.message);
     }
 });
+
+app.get("/getAllIdClient",async(req,res)=>{
+    try{
+        const idClients=await db.getAllIdClient();
+        const arrayofId=idClients.map((client)=>client.id_Client);
+        return res.status(201).json(arrayofId);
+    }
+    catch(err){
+    console.error(e.message);
+    res.sendStatus(500)
+    }
+});
+
+app.get("/getAllClient/:id",async(req,res)=>{
+    try{
+        const client=  await db.getAllClient(parseInt(req.params.id));
+       
+        return res.status(201).json(client);
+    }
+    catch(err){
+        console.log(`Erreur :${err}`);
+    }
+})
 
 app.listen(process.env.PORT || 5000,()=>console.log('Server is running on port 5000'));

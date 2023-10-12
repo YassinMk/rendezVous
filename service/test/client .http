@@ -36,3 +36,7 @@ Content-Type: application/json
 }
 ###
 GET http://localhost:5000/getNbConfirm
+###
+GET http://localhost:5000/getAllIdClient
+###
+GET http://localhost:5000/getAllClient/33

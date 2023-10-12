@@ -14,7 +14,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 const TableDasbord = ({ searchQuery }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState([]);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState(5);
   const itemsPerPage = 5;
   const [handlePage, sethandlePage] = useState(1);
   const handleClickPage = async (pageNumber) => {

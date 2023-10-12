@@ -23,33 +23,71 @@ class dbservice{
     static getdbServiceInstance(){
         return instance ? instance : new dbservice();
     }
-    async getAllClient(limit,offset){
+    async getAllClients(limit,offset){
         try{
             const result= await new Promise((resolve,reject)=>{
-                const query=`SELECT client.id_Client ,
-                              client.nom_client,client.prenom_Client,
-                              client.email_Client, 
-                              client.objet_Client,
-                              DATE_FORMAT(rendez_vous.date_rv, '%y-%m-%d') AS formatted_date_rv,
-                              rendez_vous.heure_rv,
-                              rendez_vous.status
-                              FROM client 
-                              JOIN rendez_vous ON client.id_Client=rendez_vous.id_Client
+                const query=`SELECT
+                            client.id_Client,
+                            client.nom_client,
+                            client.prenom_Client,
+                            client.email_Client,
+                            client.objet_Client,
+                            DATE_FORMAT(rendez_vous.date_rv, '%y-%m-%d') AS formatted_date_rv,
+                            rendez_vous.heure_rv,
+                            rendez_vous.status
+                            FROM client
+                            JOIN rendez_vous ON client.id_Client = rendez_vous.id_Client
                               LIMIT ? OFFSET ? `;
                 connection.query(query ,[parseInt(limit),parseInt(offset)],(err,result)=>{
                     if(err){
                         reject(new Error(err.message));
                     }
                     resolve (result);
+                    console.log(result);
                 })
             });
-            console.log(result);
+            console.log("Query Result:", result);
             return result;  
 
         }catch(err){
             console.log(err.message);
         }
     }
+    async getAllClient(id) {
+        try {
+          const infoClientsWithId = await new Promise((resolve, reject) => {
+            const query = `
+              SELECT
+                client.id_Client,
+                client.nom_client,
+                client.prenom_Client,
+                client.email_Client,
+                client.objet_Client,
+                DATE_FORMAT(rendez_vous.date_rv, '%y-%m-%d') AS formatted_date_rv,
+                rendez_vous.heure_rv,
+                rendez_vous.status
+              FROM client
+              JOIN rendez_vous ON client.id_Client = rendez_vous.id_Client
+              WHERE client.id_Client = ?;
+            `;
+      
+            connection.query(query, [id], (err, result) => {
+              if (err) {
+                reject(new Error(err.message));
+              } else {
+                console.log(result); // Log the query result
+                resolve(result);
+              }
+            });
+          });
+          
+          return infoClientsWithId; // Return the query result
+        } catch (error) {
+          console.log("erreur dans la requette", error);
+          throw error; // Rethrow the error so it can be handled higher up in your code
+        }
+      }
+     
     
     async getNbPages(){
         try{
@@ -261,6 +299,24 @@ class dbservice{
                     console.log(err.message);
                     throw err;
         }                
+    }
+    async getAllIdClient(){
+        try{
+            const idClients= await  new Promise((resolve ,reject)=>{
+                let sqlQuery=`SELECT id_Client FROM rendez_vous WHERE status ="en cours" `;
+                connection.query (sqlQuery,(err, results)=> {
+                    if(err){
+                        reject(new Error(err.message))
+                        } else{
+                            resolve(results)
+                    }
+                    });
+            });
+            return  idClients;
+            } catch(error ){
+                console.log( error.message );
+        }
+                      
     }
 }
 
