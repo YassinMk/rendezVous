@@ -145,7 +145,7 @@ const ConfirmPopup = () => {
             <Form.Select aria-label="font-regular" className="mb-3" style={{ maxWidth: "765px" }} onChange={(e) => fetchClientInformation(e.target.value)}>
               <option value="" className="font-regular" disabled selected >Select a client</option>
               {clientsId.map((clientId) => (
-                <option key={clientId} value={clientId}>
+                <option key={clientId} value={clientId} className="font-regular">
                   {clientId}
                 </option>
                 ))}
