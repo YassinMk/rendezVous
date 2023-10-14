@@ -2,7 +2,7 @@
 import React from 'react';
 import { useLocation } from "react-router-dom";
 import Confirm from "./Confirm";
-import ConfirmPopup from "./ConfirmPopup";
+import ConfirmOption from './ConfirmOption';
 import { useHistory } from "react-router-dom";
 const CheckConfirm = () => {
     const location = useLocation();
@@ -13,7 +13,7 @@ const CheckConfirm = () => {
     return <Confirm userData={location.state.userData}/>;
   } else {
     // If location.state is not true, navigate to ConfirmPopup component
-    return <ConfirmPopup />;
+    return <ConfirmOption />;
   }
 }
  

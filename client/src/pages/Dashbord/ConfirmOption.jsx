@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from "react";
 
 
-const ConfirmPopup = () => {
+const ConfirmOption = () => {
   const [isSending, setIsSending] = useState({text:"Envoyer",changeEtat:false});
   const [error, setError] = useState({ alert: "", display: false });
   const [clientsId,setClientsId]=useState([]);
@@ -223,4 +223,4 @@ yassinemkhallal@gmail.com`}
   );
 };
 
-export default ConfirmPopup;
+export default ConfirmOption;

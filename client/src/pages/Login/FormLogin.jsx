@@ -1,52 +1,72 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import Alert from "../RendezVous/Alert";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
+const FormLogin = ({ setAuthenticated }) => {
+  const [message, setMessage] = useState({
+    alert: "",
+    display: false,
+    error: false,
+  });
+  const [FormLogin, setFormLogin] = useState({ username: "", password: "" });
+  const history = useHistory();
 
-const FormLogin = ({setAuthenticated}) => {
+  const handlechange = (e) => {
+    const { name, value } = e.target;
+    setFormLogin({ ...FormLogin, [name]: value });
+  };
 
-    const [message ,setMessage]=useState({alert:"", display: false ,error:false});
-    const [FormLogin, setFormLogin] = useState({username:"",password:""});
-    const history=useHistory();
-    const handlechange = (e) => {
-      const {name, value}=e.target
-        setFormLogin({...FormLogin,[name]:value});
-    }
-
-    const handleLogin = async (e)=>{
-      e.preventDefault();
-      try{
-        const response = await fetch("http://localhost:5000/admin/login",{
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify(FormLogin)
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5000/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(FormLogin),
+      });
+      const parseRes = await response.json();
+      console.log(parseRes);
+      if (parseRes === true) {
+        localStorage.setItem("login", "yes");
+        setAuthenticated("yes");
+        history.push("/dashbord");
+        console.log("Login Success");
+      } else {
+        setAuthenticated("");
+        setMessage({
+          alert: "Username ou le mot de passe incorect",
+          display: true,
+          error: true,
         });
-        const parseRes = await response.json();
-        console.log(parseRes);
-        if(parseRes===true){
-          setAuthenticated(true);
-          history.push("/dashbord")
-          console.log("Login Success")
-        }
-        else{
-          setAuthenticated(false);
-          setMessage({alert :"Username ou le mot de passe incorect", display:true,error:true})
-        }
-      }catch(err){
-        console.log(err)
       }
-    } 
-    useEffect(() => {
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    const check = () => {
+      
+      if (localStorage.getItem("login") === "yes") {
+        console.log("login checked");
+        history.push("/dashbord");
+      }
+    }
     setTimeout(() => {
-        setMessage({ display: false, alert: '' });
+      setMessage({ display: false, alert: "" });
     }, 5000);
-    },);
+    check();
+  }, []);
   return (
     <>
-      <Alert message={message} className="py-2"/>
-      <Form className="col-11 col-lg-6 d-flex flex-column gap-3 py-4 bg-primary-cutsomized rounded-2" onSubmit={handleLogin}>
+      <Alert message={message} className="py-2" />
+      <Form
+        className="col-11 col-lg-6 d-flex flex-column gap-3 py-4 bg-primary-cutsomized rounded-2"
+        onSubmit={handleLogin}
+      >
         <h2 class="mx-auto text-white font-regular">Admine Session</h2>
         <Form.Group>
           <Form.Control
@@ -69,11 +89,15 @@ const FormLogin = ({setAuthenticated}) => {
             required
           />
         </Form.Group>
-        <Button variant="primary" type="submit" className=" login text-dark  bg-white border-0 rounded-0 font-regulare w-25  ">
+        <Button
+          variant="primary"
+          type="submit"
+          className=" login text-dark  bg-white border-0 rounded-0 font-regulare w-25  "
+        >
           Login
         </Button>
       </Form>
-      </>
+    </>
   );
 };
 

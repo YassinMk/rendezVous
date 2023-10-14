@@ -10,16 +10,15 @@ import Dashbord from "./pages/Dashbord/DashbordHome";
 import { useState} from "react";
 import Report from "./pages/Dashbord/Report";
 import CheckConfirm from "./pages/Dashbord/CheckConfirm"; // Use "Dashbord" instead of "Dashboard"
+import DashbordHome from "./pages/Dashbord/DashbordHome";
 
 
 function App() {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState("");
   useEffect(() => {
-    const authToken = localStorage.getItem("authen");
-    if (authToken) {
-      setAuthenticated(true);
-    }
-  }, []);
+    setAuthenticated(localStorage.getItem("login"))
+  }, [setAuthenticated]);
+  
   return (
     <Router>
     <div >
@@ -34,7 +33,7 @@ function App() {
           <LoginAdmin setAuthenticated={setAuthenticated}/>
         </Route>
         <Route path="/dashbord">
-            {authenticated ? (
+            {authenticated==="yes" ? (
               <Switch>
                 <Route path="/dashbord/confirmation">
                   <CheckConfirm />
@@ -43,7 +42,7 @@ function App() {
                   <Report />
                 </Route>
                 <Route path="/dashbord">
-                  <Dashbord />
+                  <DashbordHome setAuthenticated={setAuthenticated} />
                 </Route>
               </Switch>
             ) : (

@@ -3,13 +3,16 @@ import "./style3.css";
 import ResearchHome from "./ResearchHome";
 import Statistics from "./Statistics";
 import TableDasbord from "./TableDashbord";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
-const Dashbord = () => {
+const DashbordHome = () => {
   const [searchQuery,setSearchQuery]=useState('');
   const handleSearchChange = (query) => {
     setSearchQuery(query);
   };
+
+
 
   return (
     <>
@@ -28,4 +31,4 @@ const Dashbord = () => {
   );
 };
 
-export default Dashbord;
+export default DashbordHome;

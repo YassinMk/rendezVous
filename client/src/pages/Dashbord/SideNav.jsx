@@ -40,7 +40,7 @@ const SideNav = () => {
               className={`mt-3 w-75 ms-4 ms-lg-5 px-1 py-2 border border-1 rounded-2 fs-5 text-center text-md-center font-regulare nav-link  text-dark`}
             >
               <AiOutlineCheckCircle className="mb-1 me-1" />
-              Confirmer
+              Confirmation
             </NavLink>
 
             <NavLink
