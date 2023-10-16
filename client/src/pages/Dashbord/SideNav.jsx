@@ -10,6 +10,7 @@ import { NavLink } from "react-router-dom";
 const SideNav = () => {
   const [isClicked, setisClicked] = useState(false);
 
+
   const handleClickMobile = () => {
     setisClicked(!isClicked);
   };
@@ -37,7 +38,7 @@ const SideNav = () => {
 
             <NavLink
               to="/dashbord/confirmation"
-              className={`mt-3 w-75 ms-4 ms-lg-5 px-1 py-2 border border-1 rounded-2 fs-5 text-center text-md-center font-regulare nav-link  text-dark`}
+              className={`mt-3 w-75 ms-4 ms-lg-5 px-1 py-2 border border-1 rounded-2 fs-5 text-center text-md-center font-regulare nav-link  text-dark pe-none`}
             >
               <AiOutlineCheckCircle className="mb-1 me-1" />
               Confirmation
@@ -45,7 +46,8 @@ const SideNav = () => {
 
             <NavLink
               to="/dashbord/reportation"
-              className={`mt-3 w-75 ms-4 ms-lg-5 px-1 py-2 border border-1 rounded-2 fs-5 text-center text-md-center font-regulare nav-link text-dark `}
+              className={`mt-3 w-75 ms-4 ms-lg-5 px-1 py-2 border border-1 rounded-2 fs-5 text-center text-md-center font-regulare nav-link text-dark pe-none `}
+
             >
               <BiTime className="mb-1 me-1" />
               Reporter

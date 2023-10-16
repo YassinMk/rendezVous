@@ -16,12 +16,13 @@ Content-Type: application/json
 ###
 DELETE http://localhost:5000/deleteClient/15
 ###
-PUT http://localhost:5000/updateClient/15
+PUT http://localhost:5000/updateClient/33
 Content-Type: application/json
 
 {
-    "date":"2022-09-28",
-    "time":"22:59"
+    "status":"Confirmé",
+    "date":"2023-10-25",
+    "temps":"10:00"
 }
 ###
 GET http://localhost:5000/getAll?page=1&limit=5

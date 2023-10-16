@@ -109,7 +109,7 @@ const TableDasbord = ({ searchQuery }) => {
                 </td>
                 <td>
                   <div color="transparent" rounded size="sm" className="ms-5">
-                    {item.status !== "Confirmé" ? (
+                    {item.status !== "Confirmé" && item.status !== "Reporté" ? (
                       <Link
                         to={{
                           pathname: "/dashbord/confirmation",
@@ -119,19 +119,22 @@ const TableDasbord = ({ searchQuery }) => {
                         <Button className="ms-0 bg-success border-0">
                           Confirmer
                         </Button>
-                        <Link to="/dashbord/reportation">
+                        <Link to={{ pathname:"/dashbord/reportation", state: { userData : item} }}>
                           <Button className="ms-3 bg-warning border-0">
                             Reporter
                           </Button>
                         </Link>
                       </Link>
                     ) : (
+                      <>
                       <Button
-                        className="ms-0 bg-success border-0 ms-5 font-regular"
+                        className={`ms-0  border-0 ms-5 font-regular ${item.status==="Confirmé" ? "bg-success" : "bg-warning px-3"}`}
                         disabled
                       >
-                        Confirmé
+                        {item.status}
                       </Button>
+                      </>
+                      
                     )}
                   </div>
                 </td>

@@ -17,4 +17,18 @@ export const isWeekend = (dateString) => {
     return false; // It's not a weekend
 };
 
+export const transformDateFormat = (formatted_date_rv) => {
+  // Split the date string into day, month, and year
+  var dateParts = formatted_date_rv.split("-");
+  // Create a new Date object in the correct format (month is 0-based in JavaScript)
+  var transformedDate = new Date(Date.UTC(
+    parseInt(dateParts[2]),
+    parseInt(dateParts[1]) - 1,
+    parseInt(dateParts[0])
+  )) 
+  // Format the date into 'YYYY-MM-DD' format
+  var formattedDate = transformedDate.toISOString().slice(0, 10);
+  return formattedDate;
+};
+
   

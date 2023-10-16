@@ -79,15 +79,17 @@ app.delete('/deleteClient/:id',async(req,res)=>{
     }
 })
 app.put('/updateClient/:id',async(req,res)=>{
-    try{
-        const {id}=req.params;
-        console.log(id);
-        const {status}= req.body;   
-        const result= await db.updateClient(id,status);
+    try {
+        const { id } = req.params;
+        const { status, temps, date } = req.body;
+    
+        const result = await db.updateClient(id, status, temps, date);
+    
         return res.status(200).json(result);
-    }catch(err){
+      } catch (err) {
         console.log(err.message);
-    }
+        return res.status(500).json({ error: 'An error occurred while updating the client.' });
+      }
 })
 app.post('/admin/login',async(req,res)=>{
     try{

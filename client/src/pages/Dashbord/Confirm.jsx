@@ -3,10 +3,15 @@ import SideNav from "./SideNav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import Alert from "../RendezVous/Alert";
+import { useHistory, useLocation } from "react-router-dom";
 
-const Confirm = ({userData}) => {
- 
-  const [isSending, setIsSending] = useState({text:"Envoyer",changeEtat:false});
+const Confirm = () => {
+  const location = useLocation();
+  const history = useHistory();
+  const [isSending, setIsSending] = useState({
+    text: "Envoyer",
+    changeEtat: false,
+  });
   const [error, setError] = useState({ alert: "", display: false });
 
   const {
@@ -17,9 +22,9 @@ const Confirm = ({userData}) => {
     status,
     id_Client,
     objet_Client,
-  } = userData;
+  } = location.state.userData;
   console.log(nom_client);
-  
+
   const [Message, setMessage] = useState(`Cher(e) ${nom_client},
     Nous sommes ravis de vous confirmer votre réservation  le ${formatted_date_rv} à ${heure_rv}. Nous sommes impatients de vous accueillir à [adresse] à [heure] pour cette occasion spéciale.
     Détails de la réservation :
@@ -41,27 +46,30 @@ const Confirm = ({userData}) => {
     setMessage(e.target.value);
   };
 
-  const updateStatus= async()=>{
-    try{
-        const reponse= await fetch(`http://localhost:5000/updateClient/${id_Client}`,{
-            method:"PUT",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify({status:"Confirmé"})
-        });
-        if(!reponse.ok){
-            console.error('Failed to fetch data');
-        }else{
-            console.log(reponse);
+  const updateClient = async () => {
+    try {
+      const reponse = await fetch(
+        `http://localhost:5000/updateClient/${id_Client}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: "Confirmé" }),
         }
-    }catch(err){
-        console.log(err)
+      );
+      if (!reponse.ok) {
+        console.error("Failed to fetch data");
+      } else {
+        console.log(reponse);
+      }
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSending({text:"En coure..." ,changeEtat:"true"}); // Set isSending to true when the email sending process starts
+    setIsSending({ text: "En coure...", changeEtat: "true" }); // Set isSending to true when the email sending process starts
     setError({ display: false, alert: "" }); // Clear any previous error message
-  
+
     try {
       const response = await fetch("http://localhost:5000/send-email", {
         method: "POST",
@@ -75,33 +83,24 @@ const Confirm = ({userData}) => {
           date: formatted_date_rv,
         }),
       });
-  
+
       if (response.status === 200) {
         console.log("Email sent successfully");
-        updateStatus();
-        setIsSending({text:"Email été Envoyé" ,changeEtat:true});
+        updateClient();
+        setIsSending({ text: "Email été Envoyé", changeEtat: true });
       }
     } catch (error) {
       console.error("Error sending email:", error);
       setError({ display: true, alert: "Email not sent successfully" });
       // Set isSending to false when there's an error sending the email
-      setIsSending({text:"Envoyer", changeEtat:false});
+      setIsSending({ text: "Envoyer", changeEtat: false });
     }
   };
-  
-  
-
 
   useEffect(() => {
-    // This effect will run whenever isSending, validateSending, or errorOccurred changes.
-
-    // You can add logic here to respond to changes in these variabl
     setTimeout(() => {
       setMessage({ display: false, alert: "" });
     }, 5000);
-
-    // If you need to perform any actions based on these changes, you can do so here.
-    // For example, you can enable/disable the button based on these variables.
   }, []);
 
   return (
@@ -169,7 +168,7 @@ Cordialement,
 Service client 
 Menara Holding
 yassinemkhallal@gmail.com`}
-                disabled
+                readOnly
               />
             </Form.Group>
             <Button

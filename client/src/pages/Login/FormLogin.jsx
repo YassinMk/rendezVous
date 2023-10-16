@@ -62,7 +62,7 @@ const FormLogin = ({ setAuthenticated }) => {
   }, []);
   return (
     <>
-      <Alert message={message} className="py-2" />
+      <Alert message={message} className="py-2" variant="danger"/>
       <Form
         className="col-11 col-lg-6 d-flex flex-column gap-3 py-4 bg-primary-cutsomized rounded-2"
         onSubmit={handleLogin}

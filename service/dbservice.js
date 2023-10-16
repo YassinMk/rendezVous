@@ -32,7 +32,7 @@ class dbservice{
                             client.prenom_Client,
                             client.email_Client,
                             client.objet_Client,
-                            DATE_FORMAT(rendez_vous.date_rv, '%y-%m-%d') AS formatted_date_rv,
+                            DATE_FORMAT(rendez_vous.date_rv, '%d-%m-%Y') AS formatted_date_rv,
                             rendez_vous.heure_rv,
                             rendez_vous.status
                             FROM client
@@ -211,15 +211,28 @@ class dbservice{
     }
     
 }
-        async updateClient(id, status) {
+        async updateClient(id, status,temps = null, date = null) {
             try {
                 const updateClientResult = await new Promise((resolve, reject) => {
-                    const query = `
+                    let query;
+                    let queryParams = [status, id];
+
+                    // Check if time and date are provided, and if so, include them in the query
+                    if (temps !== null && date !== null) {
+                    query = `
+                        UPDATE rendez_vous
+                        SET status=?, heure_rv=?, date_rv=?
+                        WHERE id_Client = ?;
+                    `;
+                    queryParams = [status, temps, date, id];
+                    } else {
+                    query = `
                         UPDATE rendez_vous
                         SET status=?
                         WHERE id_Client = ?;
                     `;
-                    connection.query(query, [status,id], (err, result) => {
+                    }
+                    connection.query(query, queryParams, (err, result) => {
                         if (err) {
                             reject(new Error(err.message));
                         }
